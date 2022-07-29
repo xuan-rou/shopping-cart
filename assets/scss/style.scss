@@ -127,7 +127,7 @@ a{
 
 /*===== HOME =====*/
 .home {
-    height: calc(100vh - var(--header-height));
+    height: calc(100vh + var(--header-height));
     display: grid;
     row-gap: 3.5rem;
     grid-template-rows: repeat(2, max-content);
@@ -149,7 +149,7 @@ a{
         height: 240px;
         background-color: var(--primary);
         border-radius: 50%;
-        // transition: .5s;
+        transition: .5s;
     }
     &__img {
         width: 313px;
@@ -197,12 +197,16 @@ a{
 .data {
     margin-bottom: 1.5rem;
 
-    &__subtitle, &__description {
+    &__subtitle {
         font-size: var(--normal-font-size);
     }
     &__title {
         font-size: var(--biggest-font-size);
         margin-bottom: 0.5rem;
+    }
+    &__description {
+        font-size: var(--normal-font-size);
+        line-height: 24px;
     }
 }
 
@@ -214,7 +218,6 @@ a{
 }
 
 .size {
-
     &__title {
         font-size: var(--normal-font-size);
         margin-bottom: 1rem;
@@ -231,6 +234,7 @@ a{
         line-height: 30px;
         border-radius: .25rem;
         cursor: pointer;
+        transition: .5s;
 
         &.active {
             background-color: var(--primary);
@@ -256,6 +260,10 @@ a{
         color: var(--white-color);
         padding: 0.5rem;
         border-radius: .25rem;
+        transition: .5s;
+    }
+    &__minus, &__plus {
+        cursor: pointer;
     }
 }
 
@@ -276,11 +284,111 @@ a{
     &__title {
         font-size: var(--big-font-size);
         color: var(--black-color);
+        font-weight: var(--font-bold);
     }
     &__btn {
         background-color: var(--primary);
         color: var(--white-color);
         padding: 1.25rem 3.125rem;
         border-radius: .5rem;
+        transition: .5s;
+    }
+}
+
+
+
+/*===== RWD =====*/
+@media screen and (min-width: 968px) {
+    body {
+        margin: 0;
+    }
+
+    .nav {
+        height: calc(var(--header-height) + 1rem);
+
+        &__list {
+            display: flex;
+            gap: 3rem;
+        }
+        &__item {
+            margin-bottom: 0;
+        }
+        &__toggle {
+            display: none;
+        }
+    }
+
+    .home {
+        height: 100vh;
+        grid-template-columns: repeat(2, max-content);
+        grid-template-rows: max-content;
+        align-content: center;
+        justify-content: center;
+        column-gap: 6rem;
+    }
+
+    .sneaker {
+        &__figure {
+            width: 430px;
+            height: 430px;
+        }
+        &__img {
+            width: 550px;
+            top: 13%;
+            left: -6%;
+        }
+        &__colors {
+            right: initial;
+            bottom: 0;
+
+            & span {
+                display: inline-block;
+            }
+        }
+    }
+
+    .info {
+        align-self: center;
+    }
+
+    .data {
+        margin-bottom: 2.5rem;
+
+        &__subtitle {
+            font-size: 1.5rem;
+        }
+        &__title {
+            margin-bottom: 1rem;
+        }
+    }
+
+    .size {
+        margin-bottom: 2.5rem;
+
+        &__us {
+            width: 34px;
+            height: 34px;
+            line-height: 35px;
+        }
+    }
+
+    .price {
+        position: initial;
+        background-color: initial;
+        justify-content: space-between;
+        box-shadow: none;
+        column-gap: 1.5rem;
+
+        &__title {
+            color: var(--black-color);
+            font-weight: var(--font-medium);
+        }
+    }
+}
+
+@media screen and (min-width: 1200px){
+    .container {
+        margin-left: auto;
+        margin-right: auto;
     }
 }
